@@ -1,9 +1,7 @@
-import {applyMiddleware,createStore,compose} from 'redux';
+import {applyMiddleware, createStore, compose} from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import createLogger from 'redux-logger';
 import rootReducer from '../reducers';
-import immutable from 'immutable';
-
 /**
  * Logger函数定义
  */
@@ -16,14 +14,13 @@ const logger = createLogger({
  * @param initialState
  */
 
-export default function configureStore(initialState) {
-  const store=createStore(
+export default function configureStore () {
+  const store = createStore(
     rootReducer,
-    initialState,
     compose(
-      applyMiddleware(thunkMiddleware,logger),
+      applyMiddleware(thunkMiddleware, logger),
       window.devToolsExtension ? window.devToolsExtension() : f => f
-  )
+    )
   );
   //热替换选项
   if (module.hot) {
