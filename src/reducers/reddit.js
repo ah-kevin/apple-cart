@@ -1,5 +1,5 @@
 import Immutable from 'immutable';
-import {SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT, RECEIVE_POSTS, REQUEST_POSTS} from '../constants/reddit/index';
+import {SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT, RECEIVE_POSTS, REQUEST_POSTS,FAIL_DATA} from '../constants/reddit/index';
 import {combineReducers} from 'redux';
 function selectedsubreddit (state = 'reactjs', action) {
   switch (action.type) {
@@ -18,6 +18,11 @@ function posts (state = initalState, action) {
   switch (action.type) {
     case INVALIDATE_SUBREDDIT:
       return state.set('didInvalidate',true);
+    case FAIL_DATA:
+      return Immutable.fromJS({
+        isFetching:false,
+        error:action.data
+      });
     case REQUEST_POSTS:
       return state.merge({ didInvalidate: false, isFetching: true });
     case RECEIVE_POSTS:
@@ -37,7 +42,7 @@ function postsBySubreddit (state=Immutable.fromJS({}),action) {
     case RECEIVE_POSTS:
     case REQUEST_POSTS:
       return Immutable.fromJS(Object.assign({},state,{
-        [action.subreddit]: posts(state[ action.subreddit ], action)
+        [action.subreddit]: posts(state, action)
       }));
     default:
       return state

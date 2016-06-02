@@ -14,6 +14,9 @@ const history = syncHistoryWithStore(browserHistory, store, {
     return state.get('routing').toJS();
   }
 });
+// import {selectSubreddit,fetchPosts} from './actions/reddit/action';
+// store.dispatch(selectSubreddit('reactjs'));
+// store.dispatch(fetchPosts('reactjs'));
 ReactDOM.render(
   <Provider store={store} children="">
             {createRoutes(history)}
