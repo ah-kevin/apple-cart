@@ -49,7 +49,7 @@ class AppleBasket extends Component {
         </div>
 
         <div className="appleList">
-          {state.get('apples').map((apple,index)=><AppleItem key={index} state={apple}
+          {state.get('apples').map((apple,index)=><AppleItem key={index} state={apple} index={index}
                                                              actions={{eatApple:actions.eatApple}}
           />)}
         </div>

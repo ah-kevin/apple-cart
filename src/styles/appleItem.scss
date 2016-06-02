@@ -1,6 +1,9 @@
 .appleItem {
   margin: 20px;
   border: 1px solid #eff1f5;
+  .eat{
+    background-color: #7f7f7f;
+  }
   >div{
     display: inline-block;
   }
