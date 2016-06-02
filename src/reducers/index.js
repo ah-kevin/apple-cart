@@ -16,12 +16,12 @@ function routerReducer(state = initialState, action){
 
   return state;
 }
+import appleBasket from './appleBasketReducer';
 
-import items from './items'
 //使用redux的combineReducers方法将所有reducer打包起来
 const rootReducer = combineReducers({
   routing:routerReducer,
-  items
+  appleBasket
 });
 
 export default rootReducer
