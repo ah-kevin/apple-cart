@@ -11,12 +11,13 @@ const initalState = immutable.fromJS({
     }
   ]
 });
+
 export default function appleBasket (state = initalState, action) {
   switch (action.type) {
     case 'BEGIN_PICK_APPLE':
       return state.set('isPicking', true);
     case 'EAT_APPLE':
-      return state.setIn(['apples', action.payload,'isEaten'],true);
+      return state.setIn(['apples', action.payload,'isEaten'],true).deleteIn(['apples',action.payload]);
     case 'DONE_PICK_APPLE':
       return state.update('apples', (list)=>list.push(immutable.fromJS({
         id: state.get('newAppleId'),
