@@ -17,11 +17,11 @@ function routerReducer(state = initialState, action){
   return state;
 }
 
-import items from './items'
+import reddit from './reddit'
 //使用redux的combineReducers方法将所有reducer打包起来
 const rootReducer = combineReducers({
   routing:routerReducer,
-  items
+  reddit
 });
 
 export default rootReducer

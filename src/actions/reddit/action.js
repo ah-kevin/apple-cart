@@ -1,5 +1,5 @@
 import {SELECT_SUBREDDIT, INVALIDATE_SUBREDDIT,REQUEST_POSTS,RECEIVE_POSTS} from '../../constants/reddit/index';
-
+import fetch from 'isomorphic-fetch'
 export function selectSubreddit (subreddit) {
   return {
     type: SELECT_SUBREDDIT,
